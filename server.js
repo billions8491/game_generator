@@ -14,6 +14,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use(express.static('public'));
 
 
 app.get("/steam-deals", async (req, res) => {
@@ -29,7 +30,7 @@ app.get("/steam-deals", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`✅ Server is running on port ${PORT}`);
+    console.log(`✅ Server is fooking running on port ${PORT}`);
 });
 
   
