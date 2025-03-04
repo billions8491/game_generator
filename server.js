@@ -1,10 +1,14 @@
+require('dotenv').config(); 
+
 const express = require("express")
 const cors = require("cors")
 
 const app = express();
 
 const corsOptions = {
-    origin: "https://billions8491.github.io",
+    origin:  process.env.NODE_ENV === 'production'
+    ? 'https://billions8491.github.io' 
+    : 'http://localhost:3000',
     methods: "GET",
 };
 
