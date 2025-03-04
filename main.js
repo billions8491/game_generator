@@ -1,6 +1,6 @@
 import { getDailyDeal, getRandomGame, formatPrice } from './helpers.js';
 
-const urlToFetch = 'http://localhost:3000/steam-deals';
+const urlToFetch = 'https://game-generator.onrender.com/steam-deals';
 
 
 const nameOfGame = document.createElement('h2')

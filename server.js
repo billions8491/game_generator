@@ -4,13 +4,12 @@ const cors = require("cors")
 const app = express();
 
 const corsOptions = {
-    origin: "https://billions8491.github.io/game_generator/",
+    origin: "*",
     methods: "GET",
 };
 
 app.use(cors(corsOptions));
 
-app.use(express.static(__dirname));
 
 
 app.get("/steam-deals", async (req, res) => {
