@@ -3,7 +3,12 @@ const cors = require("cors")
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+    origin: "https://billions8491.github.io/game_generator/",
+    methods: "GET",
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.static(__dirname));
 
