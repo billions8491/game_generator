@@ -1,0 +1,150 @@
+html {
+    overflow: hidden;
+}
+
+body {
+    width: 100vw;
+    height: 100dvh;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+body::before {
+    content: "";
+    background-image: url('./images/steam-logo.jpg');
+    position: absolute;
+    height: 140%;
+    width: 140%;
+    top: -11rem;
+    background-repeat: repeat space;
+    background-size: 34% 34%;
+    z-index: -1;
+    opacity: .97;
+}
+
+h1 {
+    margin: 0;
+   font-size: 4rem;
+   font-family: 'Orbitron', sans-serif;
+   font-weight: bold;
+   text-transform: uppercase;
+   background-image: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+   transform: skewX(-10deg);
+   text-align: center;
+   position: relative;
+   top: 10px;
+}
+
+
+h2,h3 {
+    font-family: 'Oxanium';
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: whitesmoke;
+    
+}
+
+#dailyDealDiscount {
+    animation: neonColors 3s linear infinite;
+    font-size: 3rem;
+    background-image: linear-gradient(135deg, lime, cyan, magenta, yellow);
+    background-clip: text;
+    background-size: 200% auto;
+    -webkit-text-fill-color: transparent;
+}
+
+#original {
+    text-decoration:line-through rgba(255, 255, 255, 0.618) 2px;
+    font-size: 2rem;
+    font-weight: 500;
+    color:rgba(255, 0, 0, 0.455);
+}
+#final {
+    font-size: 3rem;
+    color:rgba(255, 77, 0, 0.877)
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 55vh;
+    margin-top: 15vh;
+}
+
+#game-info {
+    width: 40%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20%;
+}
+
+#img-container {
+    width:40%;
+    display: flex;
+    align-items: center;
+}
+
+img {
+    cursor: pointer;
+    min-width: 600px;
+}
+
+#generate-btn {
+    background: linear-gradient(135deg, #35454f 0%, #eef2f4ac 50%, #556269 100%);
+    width: 250px;
+    height: 70px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50px;
+    border: transparent;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: 'Orbitron';
+    animation: idleFlicker 3s infinite;
+    transition: 
+    box-shadow .2s ease-in-out,
+    color .2s ease,
+    scale .1s ease-in-out
+}
+
+#generate-btn:hover {
+    animation: none;
+}
+
+@keyframes idleFlicker {
+    0% {
+        box-shadow: 0px 0px 10px 5px rgba(0, 255, 255, 0.5);
+        color: rgb(93, 93, 93);
+    }
+    50%{
+        box-shadow: 0px 0px 16px 8px cyan;
+        color: rgba(0, 255, 255, 0.5);
+    }
+    100%{
+        box-shadow: 0px 0px 10px 5px rgba(0, 255, 255, 0.5);
+        color: rgb(93, 93, 93);
+    }
+}
+
+@keyframes neonColors {
+    0% {
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+     100% {
+        background-position: 0% 50%;
+    }
+}
+
