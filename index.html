@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Game Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&display=swap" rel="stylesheet">
+    <script src="public/main.js" type='module' defer></script>
+    <script src="public/helpers.js" type="module" defer></script>
+</head>
+<body>
+    <H1>Welcome to the Game Generator!</H1>
+    <main>
+        <div id="game-info"></div>
+        <div id="img-container"></div>
+    </div>
+    </main>
+    <button id="generate-btn">GENERATE</button>
+
+    <script>
+        if (window.location.hostname === 'localhost') {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'public/resources/styles.css'; 
+            document.head.appendChild(link);
+        } else {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = '/game_generator/resources/styles.css'; 
+            document.head.appendChild(link);
+        }
+      </script>
+      
+</body>
+</html>
