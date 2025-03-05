@@ -119,7 +119,7 @@ getDeals().then(response => {
         if(randomGame.final_price === 0){
             final_price.innerHTML = 'Currently FREE!'
         } else {
-            final_price.innerHTML = `Current price: ${randomGame.final_price}`
+            final_price.innerHTML = `Current price: $${randomGame.final_price}`
         }
         
 
@@ -140,7 +140,7 @@ getDeals().then(response => {
             gameInfo.append(h2, final_price)
         } 
         else if(randomGame.category === "top_sellers" && randomGame.discounted){
-            h2.innerHTML = "A SPECIAL DEAL for one of Steam\'s top selling titles!";
+            h2.innerHTML = "A discounted Top Seller!";
             original_price.innerHTML = `$${randomGame.original_price}`;
             discount.innerHTML = `${randomGame.discount_percent}% OFF!`
             final_price.innerHTML = `Now $${randomGame.final_price}`
