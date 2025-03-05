@@ -53,7 +53,8 @@ getDeals()
     link.href = `${href}`
     const imgSrc = response.header_image;
     img.src = imgSrc
-    img.style.height = '350px'
+    img.style.maxHeight = '28vh';
+    img.style.objectFit = 'contain'
     imgContainer.appendChild(link);
     link.appendChild(img)
 })
@@ -66,13 +67,15 @@ btn.addEventListener('click', () => {
     setTimeout(() => {
         btn.style.scale = '1'
     }, 105);
+    setTimeout(() => {
+        btn.style.color = 'cyan';
+        btn.style.boxShadow = '0px 0px 20px 10px cyan'
+    }, 1000);
 
 
-    getDeals().then(response => {
+getDeals().then(response => {
         
 
-
-    
         let gamesArray = []
     
         Object.keys(response)
@@ -85,14 +88,19 @@ btn.addEventListener('click', () => {
             }
         })
 
+
         const seenIds = new Set();
-        
+
+        // Filters out Steam Deck + duplicate games
         gamesArray = gamesArray.filter(game => {
+
             if(seenIds.has(game.id)){
                 return false
             }
-            seenIds.add(game.id)
-            return true
+            if(game.id !== 1675200){
+                seenIds.add(game.id)
+                return true
+            }
         })
 
         const randomGame = getRandomGame(gamesArray);
