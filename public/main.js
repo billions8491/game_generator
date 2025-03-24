@@ -3,7 +3,7 @@ import { getDailyDeal, getRandomGame, formatPrice } from './helpers.js';
 const urlToFetch = window.location.hostname === 'localhost' ? 'http://localhost:3000/steam-deals' : 'https://game-generator.onrender.com/steam-deals';
 
 
-const nameOfGame = document.createElement('h2')
+
 const h2 = document.createElement('h2')
 const btn = document.getElementById('generate-btn');
 const imgContainer = document.getElementById("img-container");
@@ -16,7 +16,7 @@ const discount = document.createElement('h3');
 const final_price = document.createElement('h3');
 
 
-console.log(urlToFetch)
+
 
 async function getDeals() {
     try {
@@ -30,33 +30,43 @@ async function getDeals() {
     }
 }
 
+
+
 getDeals()
 .then(response => {
-    const dailyDeal = getDailyDeal(response);
-    return dailyDeal[0];
+        const dailyDeal = getDailyDeal(response);
+        return dailyDeal;
 })
 .then(response => {
+
+    const dailyDeal = response[0];
+
+    if(response.length > 0){
+        h2.innerHTML = 'Today\'s Daily Deal...';
+        h2.id = 'dailyDealH2'
+        discount.id = 'dailyDealDiscount';
+        original_price.id = 'original';
+        final_price.id = 'final'
+
+        original_price.innerHTML = `$${formatPrice(dailyDeal.original_price)}`;
+        discount.innerHTML = `${dailyDeal.discount_percent}% OFF!`
+        final_price.innerHTML = `Now $${formatPrice(dailyDeal.final_price)}`
+
+        gameInfo.append(h2, original_price, discount, final_price)
+
+        const href = `https://store.steampowered.com/app/${dailyDeal.id}`;
+        link.href = `${href}`
+        const imgSrc = dailyDeal.header_image;
+        img.src = imgSrc
+        img.style.maxHeight = '28vh';
+        img.style.objectFit = 'contain'
+        imgContainer.appendChild(link);
+        link.appendChild(img)
+    } else {
+        h2.innerHTML = 'Sorry, no Daily Deal today!';
+        gameInfo.append(h2)
+    }
     
-    h2.innerHTML = 'Today\'s Daily Deal...';
-    h2.id = 'dailyDealH2'
-    discount.id = 'dailyDealDiscount';
-    original_price.id = 'original';
-    final_price.id = 'final'
-
-    original_price.innerHTML = `$${formatPrice(response.original_price)}`;
-    discount.innerHTML = `${response.discount_percent}% OFF!`
-    final_price.innerHTML = `Now $${formatPrice(response.final_price)}`
-
-    gameInfo.append(h2, original_price, discount, final_price)
-
-    const href = `https://store.steampowered.com/app/${response.id}`;
-    link.href = `${href}`
-    const imgSrc = response.header_image;
-    img.src = imgSrc
-    img.style.maxHeight = '28vh';
-    img.style.objectFit = 'contain'
-    imgContainer.appendChild(link);
-    link.appendChild(img)
 })
 
 btn.addEventListener('click', () => {
@@ -77,6 +87,8 @@ getDeals().then(response => {
         
 
         let gamesArray = []
+
+        // filters out Midweek/Daily Deals while looping through each game, adding a 'category' property and pushing it to the gamesArray
     
         Object.keys(response)
         .forEach(key => {
